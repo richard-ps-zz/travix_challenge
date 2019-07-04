@@ -1,0 +1,21 @@
+The objectives are:
+
+● Create one git repository (Bitbucket or Github) to include all the following.
+
+● 20%: Create a Kubernetes Cluster using infrastructure as code, you will get 5% only if
+K8S cluster was created manually.
+
+● Deploy the stateless application, which contains two containers:
+	○ 15%: Sidecar (reverse proxy), using nginx, openresty or ESP. we usually do that
+	  for auth and/or API monitoring, ex: collecting http status, however, for this
+	  assignment you can use the sidecar as a reverse proxy only.
+	○ 10%: Application (Sample API).
+
+● 15%: Deploy a stateful application which contains one container (ex: DB)
+
+● 10%: Create an ingress for the stateless application, to access it from outside the cluster.
+
+● 20%: Create an auto-scaling for the stateless application.
+
+● 10%: Create a document (README) describing your solution detailed enough in order to
+reproduce it and test the API with a simple curl command.

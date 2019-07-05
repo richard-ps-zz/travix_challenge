@@ -10,22 +10,16 @@ spec:
     metadata:
       labels:
         name: stateless-app
-        tier: dev
+        app: stateless-app
     spec:
       containers:
         - name: stateless-app
-          image: stateless-app #FIXME
+          image: richardps/articles-api:latest
+          
         - image: nginx:1.15
           name: nginx
           ports:
             - containerPort: 80
-          resources:
-            limits:
-              cpu: 300m
-              memory: 512Mi
-            requests:
-              cpu: 200m
-              memory: 256Mi
           volumeMounts:
           - mountPath: /etc/nginx/conf.d
             name: conf

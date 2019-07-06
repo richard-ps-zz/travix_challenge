@@ -1,3 +1,6 @@
 Travix Challenge:
 
-TODO
+Requirements:
+
+kubectl 
+helm

@@ -1,21 +1,27 @@
 The objectives are:
 
-● Create one git repository (Bitbucket or Github) to include all the following.
+● Create one git repository (Bitbucket or Github) to include all the following. (Github)
 
 ● 20%: Create a Kubernetes Cluster using infrastructure as code, you will get 5% only if
-K8S cluster was created manually.
+K8S cluster was created manually. (Terraform)
 
-● Deploy the stateless application, which contains two containers:
+● Deploy the stateless application, which contains two containers: (Deployment: 1 pod, 2 containers)
 	○ 15%: Sidecar (reverse proxy), using nginx, openresty or ESP. we usually do that
 	  for auth and/or API monitoring, ex: collecting http status, however, for this
-	  assignment you can use the sidecar as a reverse proxy only.
-	○ 10%: Application (Sample API).
+	  assignment you can use the sidecar as a reverse proxy only. 
+	  (NGINX - https://medium.com/@santhoz/nginx-sidecar-reverse-proxy-for-performance-http-to-https-redirection-in-kubernetes-dd9dbe2fd0c7)
+	○ 10%: Application (Sample API). 
+	  (Golang)
 
-● 15%: Deploy a stateful application which contains one container (ex: DB)
+● 15%: Deploy a stateful application which contains one container (ex: DB)  
+(StatefulSet - PostgreSQL)
+https://www.kaggle.com/asad1m9a9h6mood/news-articles/version/1
 
-● 10%: Create an ingress for the stateless application, to access it from outside the cluster.
+● 10%: Create an ingress for the stateless application, to access it from outside the cluster. 
+(NGINX Controller - https://cloud.google.com/community/tutorials/nginx-ingress-gke)
 
-● 20%: Create an auto-scaling for the stateless application.
+● 20%: Create an auto-scaling for the stateless application. 
+(Horizontal Pod AutoScaling - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
 
 ● 10%: Create a document (README) describing your solution detailed enough in order to
-reproduce it and test the API with a simple curl command.
+reproduce it and test the API with a simple curl command. (Markdown)

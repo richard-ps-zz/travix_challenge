@@ -9,21 +9,22 @@ import (
 )
 
 var (
-  host     = os.Getenv("DATABASE_POSTGRESQL_HOST")
-  port     = os.Getenv("DATABASE_POSTGRESQL_PORT")
+  host     = os.Getenv("DATABASE_POSTGRESQL_SERVICE_HOST")
+  port     = os.Getenv("DATABASE_POSTGRESQL_SERVICE_PORT")
   user     = "postgres"
   password = "abc"
   dbname   = "articlesdb"
 )
 
 func GetArticles(w http.ResponseWriter, r *http.Request) {
-	dbinfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)	
+	fmt.Printf("host=%s port=%s user=%s password=%s dbname=%s", host, port, user, password, dbname)
+	dbinfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)	
 	db, err := sql.Open("postgres", dbinfo)
     checkErr(err)
     defer db.Close()
 
     fmt.Println("# Querying")
-    rows, err := db.Query("SELECT * FROM articlesdb.articles")
+    rows, err := db.Query("SELECT * FROM articles")
     checkErr(err)
 
     for rows.Next() {

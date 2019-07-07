@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: initdb
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        name: initdb
+        app: initdb
+    spec:
+      containers:
+        - name: initdb
+          image: richardps/initdb:latest

@@ -34,7 +34,7 @@ func GetArticles(w http.ResponseWriter, r *http.Request) {
         var news_type string
         err = rows.Scan(&article, &data, &heading, &news_type)
         checkErr(err)
-        fmt.Fprintf(w, "%3v | %8v | %6v | %6v\n", article, data, heading, news_type)
+        fmt.Fprintf(w, "%3v | %8v | %6v | %6v\n\n", article, data, heading, news_type)
     }
 
 }

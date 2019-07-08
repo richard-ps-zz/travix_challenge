@@ -33,7 +33,7 @@ func GetArticles(w http.ResponseWriter, r *http.Request) {
     defer db.Close()
 
     fmt.Println("# Querying")
-    rows, err := db.Query("SELECT * FROM articles")
+    rows, err := db.Query("SELECT * FROM articles limit 10")
     checkErr(err)
 
     var articles = []article{}

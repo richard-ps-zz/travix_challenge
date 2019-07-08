@@ -1,4 +1,3 @@
-variable "project_id" {}
 
 provider "google" {
   credentials = "${file("sa_key2.json")}"

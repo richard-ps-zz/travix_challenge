@@ -1,0 +1,3 @@
+kubectl delete -f nginx-configmap.yml
+kubectl delete -f stateless-app-service.yml
+kubectl delete -f stateless-app-deploy.yml

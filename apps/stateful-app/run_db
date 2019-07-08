@@ -1,0 +1,3 @@
+helm install --name database --set postgresqlPassword=abc,postgresqlDatabase=articlesdb stable/postgresql
+
+kubectl create -f apps/stateful-app/initdb/initdb.yml

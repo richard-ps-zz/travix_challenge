@@ -1,0 +1,2 @@
+helm install stable/nginx-ingress
+kubectl create -f ingress/ingress-resource.yml 

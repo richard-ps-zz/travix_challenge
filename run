@@ -1,0 +1,28 @@
+#! /bin/bash
+
+export PROJECT_ID=new-project-246019
+export CLUSTER_NAME=my-gke-cluster
+
+# Creates cluster infrastructure 
+terraform init cluster
+TF_VAR_project_id=$PROJECT_ID TF_VAR_cluster_name=$CLUSTER_NAME \
+terraform apply -auto-approve cluster 
+
+# Getting credentials to interact with k8s via kubectl and Helm
+gcloud beta container clusters get-credentials $CLUSTER_NAME --region us-central1 --project $PROJECT_ID
+
+# Initializing Helm and installing Tiller on the cluster
+./helm_init
+
+# Creates a PostgreSQL instance and a pod to load its data
+./apps/stateful-app/run_db
+
+# Creates an NGINX Ingress controller
+./ingress/run_ingress
+
+# Creates the Stateless App
+./apps/stateless-app/run_stateless
+
+# Creates Horizontal Pod Autoscaling for the Stateless App
+kubectl autoscale deployment stateless-app --cpu-percent=30 --min=3 --max=10
+

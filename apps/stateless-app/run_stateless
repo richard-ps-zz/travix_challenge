@@ -1,0 +1,3 @@
+kubectl create -f apps/stateless-app/nginx-configmap.yml
+kubectl create -f apps/stateless-app/stateless-app-service.yml
+kubectl create -f apps/stateless-app/stateless-app-deploy.yml

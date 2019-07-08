@@ -6,6 +6,7 @@ import (
     _ "github.com/lib/pq"
     "database/sql"
     "os"
+    "encoding/json"
 )
 
 var (
@@ -15,6 +16,13 @@ var (
   password = "abc"
   dbname   = "articlesdb"
 )
+
+type article struct {
+    Article string
+    Date  string
+    Heading string
+    Type string
+}
 
 func GetArticles(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("host=%s port=%s user=%s password=%s dbname=%s", host, port, user, password, dbname)
@@ -27,15 +35,26 @@ func GetArticles(w http.ResponseWriter, r *http.Request) {
     rows, err := db.Query("SELECT * FROM articles")
     checkErr(err)
 
+    var articles = []article{}
+
     for rows.Next() {
-        var article string
-        var data string
+        var content string
+        var date string
         var heading string
         var news_type string
-        err = rows.Scan(&article, &data, &heading, &news_type)
+        err = rows.Scan(&content, &date, &heading, &news_type)
         checkErr(err)
-        fmt.Fprintf(w, "%3v | %8v | %6v | %6v\n\n", article, data, heading, news_type)
+        article_struct := article{Article: content,
+                            Date: date,
+                            Heading: heading,
+                            Type: news_type}
+
+        articles = append(articles, article_struct)
     }
+
+    b, err := json.Marshal(articles)
+    checkErr(err)
+    fmt.Fprintf(w, string(b))
 
 }
 

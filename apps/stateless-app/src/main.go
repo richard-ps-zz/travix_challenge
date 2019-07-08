@@ -25,6 +25,7 @@ type article struct {
 }
 
 func GetArticles(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
 	fmt.Printf("host=%s port=%s user=%s password=%s dbname=%s", host, port, user, password, dbname)
 	dbinfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)	
 	db, err := sql.Open("postgres", dbinfo)

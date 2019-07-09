@@ -3,6 +3,8 @@
 export PROJECT_ID=new-project-246019
 export CLUSTER_NAME=my-gke-cluster
 
+gcloud auth login --launch-browser
+
 # Creates cluster infrastructure 
 terraform init cluster
 TF_VAR_project_id=$PROJECT_ID TF_VAR_cluster_name=$CLUSTER_NAME \

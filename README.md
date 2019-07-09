@@ -39,8 +39,9 @@ Now that you have your service account and environment variables set up, it's ti
 
 `$ ./run`
 
-The 'run' script will call other scripts responsible for creating
-diferent components and resources of the infrastructure (eg: run_db and run-stateless).
+The first thing this script will do, after exporting the variables mentioned in the previous section, is launch a new tab in your web browser in order to log into your google account.
+
+After that, 'run' script will call other scripts that are responsible for creating diferent components and resources of the infrastructure (eg: run_db and run-stateless).
 
 ### Testing the API
 
@@ -53,6 +54,10 @@ You should see two different IP addresses, the first one is the cluster IP, used
 Copy the external IP value and call this URL on your browser:
 
 `http://{INGRESS-EXTERNAL-IP}/articles`
+
+or, if you prefer, on the command line:
+
+`curl http://{INGRESS-EXTERNAL-IP}/articles`
 
 You should see values of news paper articles returning from the API.
 

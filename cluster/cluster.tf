@@ -25,6 +25,5 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-  depends_on = [google_project_service.container_api,
-  google_project_service.cloud_resource_manager_api]
+  depends_on = [google_project_service.container_api, google_project_service.cloud_resource_manager_api]
 }

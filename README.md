@@ -1,12 +1,64 @@
-Travix Challenge:
+## Travix Challenge
 
-Requirements:
+To reproduce the infrastructure defined on this repository you
+will need to set up an environment with the following:
 
-kubectl 
-helm
+### Dependencies
 
-Project:
+terraform (version 0.12.3)
 
-Service Account with permissions the project: 
-- Administrador do Kubernetes Engine
-- Proprietário
+kubectl   (version 1.15)
+
+helm      (version 2.13.0)
+
+gcloud    (version 244.0.0)
+
+
+Also, you will have to have a GCP project and a service account
+in this project with the roles:
+
+- Kubernetes Engine Admin
+- Owner 
+
+### Configuring your variables
+
+In order to create the infrastructure in your own GCP project it's important to configure your service account and project as 
+inputs to the automation. 
+
+To do it, just download a key to your service account in JSON format and place it in the root folder of the project, renaming it to sa_key.json.
+
+There are other two variables that have to be configured inside the script 'run' that lies into the root folder of this repo.
+
+`export PROJECT_ID={YOUR-PROJECT-ID}`
+
+`export CLUSTER_NAME={YOUR-CLUSTER-NAME}`
+
+### Running the automation
+
+Now that you have your service account and environment variables set up, it's time to run the automation inside the 'run' script.
+
+`$ ./run`
+
+The 'run' script will call other scripts responsible for creating
+diferent components and resources of the infrastructure (eg: run_db and run-stateless).
+
+### Testing the API
+
+To check if the automation has worked out well, we need to find out the external IP of the ingress controller created:
+
+`kubectl get svc | grep nginx-ingress-controller`
+
+You should see two different IP addresses, the first one is the cluster IP, used internally, and the second is the external IP.
+
+Copy the external IP value and call this URL on your browser:
+
+`http://{INGRESS-EXTERNAL-IP}/articles`
+
+You should see values of news paper articles returning from the API.
+
+### Cleaning up
+
+To destroy the cluster created previously and all its resources,
+just run the following command from the root folder:
+
+`terraform destroy cluster`

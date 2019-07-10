@@ -7,7 +7,7 @@ will need to set up an environment with the following:
 
 ### Dependencies
 
-terraform (version 0.12.3)
+terraform (version 0.12.3)README.md
 
 kubectl   (version 1.15)
 

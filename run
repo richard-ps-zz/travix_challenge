@@ -26,5 +26,5 @@ gcloud beta container clusters get-credentials $CLUSTER_NAME --region us-central
 ./apps/stateless-app/run_stateless
 
 # Creates Horizontal Pod Autoscaling for the Stateless App
-kubectl autoscale deployment stateless-app --cpu-percent=30 --min=3 --max=10
+kubectl autoscale deployment stateless-app --cpu-percent=30 --min=1 --max=10
 

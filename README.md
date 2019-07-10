@@ -1,6 +1,6 @@
 ## Travix Challenge
 
-![alt text](https://github.com/richard-ps/travix_interview/raw/master/src/k8s.png)
+![alt text](https://github.com/richard-ps/travix_challenge/blob/master/k8s.png?raw=true)
 
 To reproduce the infrastructure defined on this repository you
 will need to set up an environment with the following:

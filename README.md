@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/richard-ps/travix_challenge/blob/master/k8s.png?raw=true)
 
-The objectives of this project are described in the file [objectives.txt](https://github.com/richard-ps/travix_challenge/blob/master/ojectives.txt) and the design rationale is exposed in the [Design Rationale]() file.
+The objectives of this project are described in the file [objectives.txt](https://github.com/richard-ps/travix_challenge/blob/master/ojectives.txt) and the design rationale is exposed in the [Design Rationale](https://github.com/richard-ps/travix_challenge/blob/master/rationale.md) file.
 
 To reproduce the infrastructure defined on this repository you
 will need to set up an environment with the following:
@@ -35,7 +35,7 @@ inputs to the automation.
 
 To do it, just download a key to your service account in JSON format and place it in the root folder of the project, renaming it to sa_key.json.
 
-There are other two variables that have to be configured inside the script 'run' that lies into the root folder of this repo.
+Also, there is a variable that have to be configured inside the script 'run' that lies into the root folder of this repo.
 
 `export PROJECT_ID={YOUR-PROJECT-ID}`
 

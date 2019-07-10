@@ -1,0 +1,35 @@
+!# /bin/bash
+
+export HELM_VERSION=v2.13.0
+export KUBECTL_VERSION=v1.11.3
+export TERRAFORM_VERSION=0.12.3
+export GCLOUD_VERSION=242.0.0-0
+
+apt-get update \
+&& apt-get install -y \
+        curl \
+        git \
+        lsb-core \
+        python \
+        python-pip \
+        zip \
+ && export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
+ && echo "deb http://packages.cloud.google.com/apt ${CLOUD_SDK_REPO} main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+ && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+ && apt-get update \
+ && apt-get install -y \
+        google-cloud-sdk=${GCLOUD_VERSION} \
+ && apt-get -y autoremove \
+ && apt-get -y clean \
+ && rm -rf /var/lib/apt/*
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
+ && chmod +x ./kubectl \
+ && mv ./kubectl /usr/local/bin/kubectl
+
+curl https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -xzO linux-amd64/helm > /usr/local/bin/helm && \
+    chmod +x /usr/local/bin/helm
+
+curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+ && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin \
+ && rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip

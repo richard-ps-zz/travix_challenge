@@ -2,6 +2,8 @@
 
 ![alt text](https://github.com/richard-ps/travix_challenge/blob/master/k8s.png?raw=true)
 
+The objectives of this project are described in the file [objectives.txt](https://github.com/richard-ps/travix_challenge/blob/master/ojectives.txt) and the design rationale is exposed in the [Design Rationale]() file.
+
 To reproduce the infrastructure defined on this repository you
 will need to set up an environment with the following:
 

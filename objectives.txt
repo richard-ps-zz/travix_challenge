@@ -15,7 +15,6 @@ K8S cluster was created manually. (Terraform)
 
 ● 15%: Deploy a stateful application which contains one container (ex: DB)  
 (StatefulSet - PostgreSQL)
-https://www.kaggle.com/asad1m9a9h6mood/news-articles/version/1
 
 ● 10%: Create an ingress for the stateless application, to access it from outside the cluster. 
 (NGINX Controller - https://cloud.google.com/community/tutorials/nginx-ingress-gke)
